@@ -1619,14 +1619,18 @@ var ajaxChat = {
 	handleInputFieldKeyPress: function(event) {
 		if(event.keyCode === 13 && !event.shiftKey) {
 			this.sendMessage();
-			try {
-				event.preventDefault();
-			} catch(e) {
-				event.returnValue = false; // IE
-			}
+			this.preventDefault(event);
 			return false;
 		}
 		return true;
+	},
+
+	preventDefault: function(event) {
+		try {
+			event.preventDefault();
+		} catch(e) {
+			event.returnValue = false; // IE
+		}
 	},
 
 	handleInputFieldKeyUp: function(event) {
