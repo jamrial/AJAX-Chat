@@ -1617,10 +1617,22 @@ var ajaxChat = {
 	},
 	
 	handleInputFieldKeyPress: function(event) {
-		if(event.keyCode === 13 && !event.shiftKey) {
-			this.sendMessage();
-			this.preventDefault(event);
-			return false;
+		switch(event.keyCode) {
+			case 13:
+				if(!event.shiftKey) {
+					this.sendMessage();
+					this.preventDefault(event);
+					return false;
+				}
+				break;
+			case 19: // Pause key to pause or resume autoscrolling
+				if(!event.shiftKey && !event.ctrlKey && !event.altKey) {
+					this.toggleSetting('autoScroll', 'autoScrollButton');
+					this.preventDefault(event);
+					return false;
+				}
+			default:
+				break;
 		}
 		return true;
 	},
