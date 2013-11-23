@@ -1631,6 +1631,20 @@ var ajaxChat = {
 					this.preventDefault(event);
 					return false;
 				}
+				break;
+			case 33: // PageUp key to scroll
+				if(!event.shiftKey && !event.ctrlKey && !event.altKey) {
+					this.dom['chatList'].scrollTop = this.dom['chatList'].scrollTop - (this.dom['chatList'].clientHeight - 25);
+					this.preventDefault(event);
+					return false;
+				}
+				break;
+			case 34: // PageDown key to scroll
+				if(!event.shiftKey && !event.ctrlKey && !event.altKey) {
+					this.dom['chatList'].scrollTop = this.dom['chatList'].scrollTop + (this.dom['chatList'].clientHeight - 25);
+					this.preventDefault(event);
+					return false;
+				}
 			default:
 				break;
 		}
